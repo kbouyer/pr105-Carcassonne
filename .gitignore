@@ -1,0 +1,5 @@
+*~
+*.o
+install/*
+src/tmp.c
+.vscode/*

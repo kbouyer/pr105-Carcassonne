@@ -1,0 +1,195 @@
+\documentclass[dvipsnames]{rapportCS}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage{graphicx} %figures
+\usepackage[french, vlined, lined, linesnumbered, boxed]{algorithm2e}
+
+%\usepackage{wrapfig}
+%\usepackage[nonumberlist, toc]{glossaries}
+
+\usepackage{caption}
+\DeclareCaptionFormat{citation}{%
+   \ifx\captioncitation\relax\relax\else
+     \captioncitation\par
+   \fi
+   #1#2#3\par}
+\newcommand*\setcaptioncitation[1]{\def\captioncitation{\textit{Source :}~#1}}
+\let\captioncitation\relax
+\captionsetup{format=citation,justification=centering}
+
+%\makeglossaries
+    
+%\newglossaryentry{dataset} {
+%    name = Mot,
+%    description = {Définition}   
+%}
+
+\setlist[itemize]{label=\textbullet}
+\title{PR105 Rapport Projet Carcassonne - Enseirb-Matmeca} 
+%Thanks for Rapport CentraleSupelec - Template, By Axel Poupart-Lafarge
+\begin{document}
+
+%----------- Informations du rapport ---------
+
+\titre{PR105 Rapport Projet Carcassonne} % Titre du fichier
+
+\lieuprojet{Enseirb-Matmeca -- I1} % Pour le bas de la page
+\basdepage{PR105 Rapport Projet Carcassonne}
+\eleve{Bouyer Kerrian, Genetet Maud, Dufetrelle Arthur et Larragueta César}
+\sujetprojet{Implémentation du jeu Carcasonne en C}
+
+\dates{
+    S6 - Année universitaire 2023-2024
+}
+\shortdates{2023-2024}
+
+%----------- Initialisation -------------------
+
+
+\fairemarges %Afficher les marges
+\fairepagedegarde %Créer la page de garde
+\setcounter{page}{2}
+\setcounter{figure}{0}
+%----------- Page vide -------------------
+%\vspace*{\stretch{1}}
+%\newpage
+
+%----------- Remerciements ----------------
+
+
+%--------------- Glossaire -----------------
+
+%\printglossary
+
+%\newpage
+
+%------------ Table des matières ----------------
+
+\listoffigures
+\newpage
+\tabledematieres % Créer la table de matièreshttps://eirb.f
+
+%------------ Introduction ----------------
+
+\newpage
+
+\section{Introduction}
+
+Dans cette introduction, nous allons vous présenter les modalités, le but du jeu ainsi que l'objectif de notre projet, évoquer notre collaboration en groupe, discuter de l'aspect crucial de la compilation, et enfin, partager les aboutissements finaux de notre travail.
+
+\subsection{Modalités}
+
+Ce projet fait partie du cours de Programmation impérative 2 et développement logiciel de la formation d'Ingénieur en Informatique à l'ENSEIRB-MATMECA, encadré par David RENAULT et Georges EYROLLES.\\
+
+Réalisé en groupe de mars à mai 2024. L'objectif du projet était de produire un code propre et fonctionnel. En parallèle, la rédaction de ce rapport en Latex a été entreprise pour documenter notre démarche et nos réalisations, en vue d'une soutenance de 30 minutes devant nos professeurs à la fin du projet.
+
+
+\subsection{Présentation du projet}
+
+Ce projet reprend le jeu de société Carcassonne. Dans ce jeu, l'objectif des joueurs est de marquer des points en construisant des édifices (routes, châteaux, monastères, etc.), en optimisant leurs possibilités en fonction des cartes reçues, en terminant leurs propres constructions voire même en s'appropriant celles de leurs voisins. Pendant le jeu, les deux joueurs alternent pour placer des tuiles sur le plateau, veillant à ce qu'elles se connectent aux tuiles existantes par des bords de même couleur. Ils peuvent également placer un personnage (meeple) sur une tuile nouvellement placée, en respectant les règles de placement qui limitent à un seul personnage par tuile et ne permettent pas de placer plus de personnages que ceux disponibles. Si un joueur ne peut pas placer correctement sa tuile, il perd.\\
+
+Le but du projet était de créer une simulation aléatoire d'une partie du jeu en utilisant le langage C. Le projet a donc été divisé en plusieurs parties telles que la création des tuiles avec des graphes, la boucle de jeu, le calcul du score et l'implémentation d'un serveur de jeu et d'un ensemble de clients.
+
+\subsection{Collaboration}
+
+Dans ce projet, nous avons donc dû travailler à quatre, ce qui fut une expérience enrichissante. Chacun a pu apporter son expertise et son point de vue, ce qui a véritablement contribué à l'avancement et à l'enrichissement du projet.\\
+
+Nous organisions régulièrement de petites réunions pour évaluer l'avancement du projet et décider de la répartition des tâches. De plus, nous travaillions souvent en petits groupes de deux pour favoriser le brainstorming sur les différentes possibilités d'implémentation. Par exemple, nous avons particulièrement réfléchi à l'implémentation des graphes et à la manière de gérer la détection des couleurs des côtés d'une tuile pour décider de l'emplacement de la suivante.\\
+
+Ensuite, étant donné que le projet était développé sur un dépôt distant, nous avons utilisé un gestionnaire de versions : Git. Pour éviter les conflits lors des modifications du code, une bonne organisation était indispensable, mettant en avant une communication fluide et efficace. En effet, nous avons rencontré plusieurs conflits chronophages lors de leur résolution. Il est rapidement devenu évident que la clé de l'efficacité résidait dans une bonne répartition des tâches.
+
+\subsection{Rendu final}
+
+Mettre nos accomplissements
+
+
+%------------ Implémentation du jeu ----------------
+
+\newpage
+
+\section{Environnement du jeu}
+
+Dans cette section, nous allons vous présenter l'implémentation de notre jeu, en mettant en lumière les défis auxquels nous avons dû faire face et la manière dont nous les avons résolus. Nous aborderons successivement ...
+
+\subsection{Création de notre plateau de jeu}
+
+parler des tuiles , comment on a visualiser cela et comment on a fait ( graphe )
+
+\begin{figure}[H] % insertion à ce niveau du code
+\centering % centrer
+%\fbox % encadrer
+{\includegraphics[width=1\textwidth]% taille
+{logos/tuile}} % nom
+\caption{Représentation d'une tuile} % légende
+\label{fig:tuile} % référence pour la citer dans le texte
+\end{figure}
+
+
+\begin{figure}[H] % insertion à ce niveau du code
+\centering % centrer
+%\fbox % encadrer
+{\includegraphics[width=1\textwidth]% taille
+{logos/tuiles_graphe}} % nom
+\caption{Représentation de plusieurs tuiles et de leur graphe correspondant} % légende
+\label{fig:plateau_jeu} % référence pour la citer dans le texte
+\end{figure}
+
+
+- analyser les problèmes
+- détailler la conception des solutions algorithmiques
+- discuter de la correction
+- complexité des algorithmes
+- problèmes de mise en oeuvre
+- réalisation (en particulier les qualités du développement logiciel mises en pratique, adaptées - au cadre de la programmation fonctionnelle ou impérative)
+- tests de validation réalisés
+
+
+\subsection{Stockage de nos tuiles}
+
+\subsection{Choix des coups possible}
+
+comment on determine les coup possibles
+solution
+
+\subsection{Calcul du Score}
+
+\subsection{Serveur de Jeu} 
+
+\subsection{Création des joueurs}
+
+bibliotheque partagé
+
+
+%------------ Expérience acquise ----------------
+
+\newpage
+
+\section{Expérience acquise}
+
+Dans cette section, nous allons présenter les compétences que nous avons acquises et les enseignements que nous avons tirés de ce projet. Nous aborderons ...
+
+\subsection{Création d'un serveur}
+
+\subsection{Utilisation de graphes}
+igraph 
+
+\subsection{Création de bibliothèques partagées}
+dlopen
+
+\subsection{Environnement de travail}
+
+\subsubsection{Valgrind}
+
+\subsubsection{Makefile}
+
+
+
+%------------ Conclusion ----------------
+
+\newpage
+
+\section*{Conclusion}
+\addcontentsline{toc}{section}{Conclusion}
+
+
+\end{document}
